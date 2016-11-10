@@ -1,0 +1,28 @@
+Discoveries Explorer (Prototype)
+========
+
+This is a simple way to explore the amazing Discoveries API.
+
+To install:
+```shell
+git clone https://github.com/keen/discoveries-explorer-prototype.git
+cd discoveries-explorer-prototype
+npm install
+npm install -g webpack-dev-server
+```
+
+Copy `app.config-example.js` to `app.config.js`. Open up `app.config.js` and
+plugin your read key and your project id.
+
+To run:
+```shell
+npm run dev
+```
+open http://localhost:8080
+
+![](https://github.com/keen/discoveries-explorer-prototype/blob/master/screen_shot.png?raw=true)
+
+### Warning
+
+This is a slightly buggy prototype, not a fully developed app.
+Occasionally changing the "Range" slider too quickly will trip up the app.

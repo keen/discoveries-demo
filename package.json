@@ -1,0 +1,30 @@
+{
+  "name": "discoveries_playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --progress --colors --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react": "15.3.2"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "keen-dataviz": "^1.0.4",
+    "superagent": "^2.3.0",
+    "rx": "4.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "browserify": "^13.1.0",
+    "extended-define-webpack-plugin": "^0.1.2",
+    "reactify": "^1.1.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
