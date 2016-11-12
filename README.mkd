@@ -18,7 +18,7 @@ To run:
 ```shell
 npm run dev
 ```
-open http://localhost:8080
+open [http://localhost:8080](http://localhost:8080) 
 
 ![](https://github.com/keen/discoveries-explorer-prototype/blob/master/screen_shot.png?raw=true)
 
