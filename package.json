@@ -16,7 +16,11 @@
     "superagent": "^2.3.0",
     "rx": "4.1.0"
   },
+  "peerDependencies": {
+  },
   "devDependencies": {
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",

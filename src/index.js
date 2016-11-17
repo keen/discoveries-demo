@@ -26,6 +26,7 @@ const DiscoveryExplorer = React.createClass({
   _changeHours: function(e) {
     e.stopPropagation();
     this.setState({ hours: e.target.value })
+    this.state.hours = e.target.value
     this._dimensionOnChange(this.state.selectedDimension);
   },
 
@@ -51,7 +52,7 @@ const DiscoveryExplorer = React.createClass({
     request
       .get(url)
       .end(function(err, res) {
-        const data = JSON.parse(res.text);
+        const data = res.body;
         let interval = "hours";
         switch (data.query.interval) {
           case "hourly":
@@ -70,14 +71,16 @@ const DiscoveryExplorer = React.createClass({
           discovery: data,
           interval: interval
         });
+
         const selectedDiscovery = _this.state.selectedDiscovery;
       })
   },
 
   _dimensionOnChange: function(e) {
     const _this = this;
-    let dimensions = ""
+    let dimensions = "";
     if (e.target) {
+      if (e.target.value.length === 0) return;
       this.setState({
         selectedDimension: e.target.value,
         data: []
@@ -85,18 +88,23 @@ const DiscoveryExplorer = React.createClass({
       dimensions = e.target.value.split(",");
     }
     else {
-      dimensions =  this.state.selectedDimension;
+      if (e.length === 0) return;
+      this.setState({
+        selectedDimension: e,
+        data: []
+      });
+      dimensions = [this.state.selectedDimension];
     }
 
     let data = [];
 
-    this._fetchObservable(dimensions).subscribe(
-      function(result) {
+    this._fetchObservable(dimensions).subscribe(function(result) {
         const re = /dimension\=(\w+)/
-        const dimension = re.exec(result.req.url)[1];
+        const dimension = re.exec(result.url);
         data.push(result.body)
+        _this.setState({ data: data })
       },
-      function(err) { console.error("There was an error making your request", err) },
+      function(err) { console.error(dimension+"There was an error making your request", err) },
       function() { _this.setState({ data: data }) }
     );
   },
@@ -158,13 +166,7 @@ const DiscoveryExplorer = React.createClass({
           </div>
         </div>
 
-        <div className="row">
-          {this.state.data.map(function(d, i) {
-            return(<div className="column column-50" key={i}>
-              <Chart chartData={d} dataviz={new KeenDataviz()} />
-            </div>)
-          })}
-        </div>
+        <Chart ref='keen-viz' response={this.state.data} dataviz={new KeenDataviz()} />
 
       </div>
     );
