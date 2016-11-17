@@ -5,8 +5,8 @@ This is a simple way to explore the amazing Discoveries API.
 
 To install:
 ```shell
-git clone https://github.com/keen/discoveries-explorer-prototype.git
-cd discoveries-explorer-prototype
+git clone https://github.com/keen/discoveries-demo.git
+cd discoveries-demo
 npm install
 npm install -g webpack-dev-server
 ```
@@ -18,7 +18,7 @@ To run:
 ```shell
 npm run dev
 ```
-open http://localhost:8080
+open [http://localhost:8080](http://localhost:8080) 
 
 ![](https://github.com/keen/discoveries-explorer-prototype/blob/master/screen_shot.png?raw=true)
 
